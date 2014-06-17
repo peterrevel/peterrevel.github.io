@@ -1,16 +1,44 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Driver's Helper</title>
+		<title>Jarvis</title>
 		<link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
 		<link rel="stylesheet" href="driver.css">
+		<script type="text/javascript"
+      		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCP8TOYl0iDUhmHKAcSIyzntxdgZkD5HDI">
+	    </script>
+    	<script type="text/javascript">
+    		var sanFrancisco = new google.maps.LatLng(37.7833, -122.4167);
+    		var markers = [];
+      		function initialize() {
+	        	var mapOptions = {
+	          		center: sanFrancisco,
+	          		zoom: 13,
+	          		disableDefaultUI: true
+	        	};
+	        	var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+	        	google.maps.event.addListener(map, 'click', function(e) {
+    				placeMarker(e.latLng, map);
+  				});
+      		}
+      		google.maps.event.addDomListener(window, 'load', initialize);
+  			function placeMarker(position, map) {
+  				console.log("Placing Marker");
+  				var marker = new google.maps.Marker({
+    				position: position,
+    				draggable: true,
+    				map: map
+  				});
+  				map.panTo(position);
+			}
+	    </script>
 	</head>
 	<body>
 		<div class="nav nav-pills">
 	    	<div class="container">
 	        	<ul class="pull-left">
 		  			<li><a href="../index.html">Peter Reveles</a></li>
-		  			<li class="active"><a href="forLyft/driver.html">For Lyft</a></li>
+		  			<li class="active"><a style="color: rgb(214, 56, 174);" href="forLyft/driver.html">For Lyft</a></li>
 				</ul>
 				<ul class="pull-right">
 		    		<li><a href="https://twitter.com/PeterRevel">Twitter</a></li>
@@ -21,7 +49,8 @@
 	  	</div>
 		<div class="jumbotron">
 			<h1>Hello Driver, I'm Jarvis.</h1>
+			<p>Touch the map to drop location A.</p>
 		</div>
-		
+		<div id="map-canvas" />
 	</body>
 </html>

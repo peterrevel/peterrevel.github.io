@@ -20,11 +20,20 @@ body {
   display: inline;
  }
 
-.jumbotron h1{
-	text-align: center;
-}
-
 .jumbotron {
 	margin-top: 50px;
 	background-color: rgb(0, 168, 159);
+	text-align: center;
+}
+
+.jumbotron p{
+	margin-top: 25px;
+}
+
+#map-canvas { 
+	height: 450px; 
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 50px;
 }
