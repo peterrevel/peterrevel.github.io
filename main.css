@@ -28,6 +28,8 @@
 .jumbotron {
   background-image:url('http://th03.deviantart.net/fs71/PRE/f/2013/178/3/6/ios_7_galaxy_wallpaper_for_desktop_by_iar7-d6av9ap.png');
   background-repeat: no-repeat;
+  margin-left: auto;
+  margin-right: auto;
   height: 500px;
 }
 
