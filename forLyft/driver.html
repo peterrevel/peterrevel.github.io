@@ -7,64 +7,12 @@
 		<script type="text/javascript"
       		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCP8TOYl0iDUhmHKAcSIyzntxdgZkD5HDI">
 	    </script>
-    	<script type="text/javascript">
-    		var sanFrancisco = new google.maps.LatLng(37.7833, -122.4167);
-    		var directionsDisplayOne;
-    		var directionsDisplayTwo;
-			var directionsService = new google.maps.DirectionsService();
-			var map;
-    		var markers = [];
-      		function initialize() {
-      			directionsDisplayOne = new google.maps.DirectionsRenderer();
-      			directionsDisplayTwo = new google.maps.DirectionsRenderer();
-	        	var mapOptions = {
-	          		center: sanFrancisco,
-	          		zoom: 13,
-	          		disableDefaultUI: true
-	        	};
-	        	map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-	        	directionsDisplayOne.setMap(map);
-	        	directionsDisplayTwo.setMap(map);
-	        	google.maps.event.addListener(map, 'click', function(e) {
-    				placeMarker(e.latLng, map);
-  				});
-      		}
-      		google.maps.event.addDomListener(window, 'load', initialize);
-  			function placeMarker(position, map) {
-  				if (markers.length < 4) {
-  					console.log("Placing Marker");
-	  				var marker = new google.maps.Marker({
-	    				position: position,
-	    				draggable: true,
-	    				map: map
-	  				});
-	  				map.panTo(position);
-	  				markers.push(marker);
-  				};
-  				if (markers.length == 2) {
-  					calcRoute(markers[0].position, markers[1].position, directionsDisplayOne);
-  					markers[0].setMap(null);
-  					markers[1].setMap(null);
-  				};
-  				if (markers.length == 4) {
-  					calcRoute(markers[2].position, markers[3].position, directionsDisplayTwo);
-  					markers[2].setMap(null);
-  					markers[3].setMap(null);
-  				};
-			}
-			function calcRoute(start, end, dd) {
-  				var request = {
-      				origin:start,
-      				destination:end,
-      				travelMode: google.maps.TravelMode.DRIVING
-  				};
-  				directionsService.route(request, function(response, status) {
-    				if (status == google.maps.DirectionsStatus.OK) {
-      					dd.setDirections(response);
-    				}
-  				});
-			}
+	    <script type="text/javascript"
+      		src="scripts/googleMapsHandler.js">
 	    </script>
+	    <script type="text/javascript"
+			src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">
+		</script>
 	</head>
 	<body>
 		<div class="nav nav-pills">
@@ -81,8 +29,8 @@
 	    	</div>
 	  	</div>
 		<div class="jumbotron">
-			<h1>Hello Driver, I'm Jarvis.</h1>
-			<p>Touch the map to drop locations.</p>
+			<h1>Hello, I'm Jarvis.</h1>
+			<p class="messageBanner">Touch the map to set the start of ride one.</p>
 		</div>
 		<div id="map-canvas" />
 	</body>
