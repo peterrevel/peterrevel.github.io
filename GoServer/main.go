@@ -36,6 +36,7 @@ const ADDR = ":8080"
 
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprint(w, "Hello World")
     w.WriteHeader(404)
 }
 
