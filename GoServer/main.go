@@ -11,7 +11,7 @@ import (
     // "code.google.com/p/go-uuid/uuid"
 )
 
-const ADDR = "http://peterrevel.github.io"
+const ADDR = ":8080"
 
 // const ApiKey = "75199cxziny2hy"
 // const SecretKey = "Tvk934KroAQeNtCV"
