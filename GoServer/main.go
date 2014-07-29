@@ -26,7 +26,7 @@ func getStringAfterString(mainString string, seperaterString string) string {
 
 func main() {
     mux := http.NewServeMux()
-    mux.HandleFunc("/", Endpoint(GET(indexHandler)))
+    mux.HandleFunc("/api/", Endpoint(GET(indexHandler)))
     // mux.HandleFunc("/v1/job/", Endpoint(GET(getSpecificJob)))
     // mux.HandleFunc("/v1/jobs/", Endpoint(GET(getJobIndex)))
     // mux.HandleFunc("/v1/industry/", Endpoint(GET(getIndustryIndex)))
